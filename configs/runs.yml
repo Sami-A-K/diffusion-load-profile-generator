@@ -1,0 +1,31 @@
+# Liste aller Modell-Configs. build_training_data, train_model und sample_population laufen
+# ohne Argument ueber alle Eintraege; fuer Einzellaeufe den Config-Pfad uebergeben.
+configs:
+  - configs/config_main.yml
+  - configs/config_main_noenc.yml
+  - configs/config_main_l3.yml
+  - configs/config_patch_1h.yml
+  - configs/config_patch_2h.yml
+  - configs/config_patch_4h.yml
+  - configs/config_patch_6h.yml
+  - configs/config_patch_12h.yml
+  - configs/config_patch_24h.yml
+  - configs/config_patch_1h_seed12.yml
+  - configs/config_patch_1h_seed20.yml
+  - configs/config_patch_24h_seed12.yml
+  - configs/config_patch_24h_seed20.yml
+  - configs/config_patch_8h_seed12.yml
+  - configs/config_patch_8h_seed20.yml
+  - configs/config_patch_8h_seed05.yml
+  - configs/config_patch_8h_seed07.yml
+  - configs/config_main_nocat.yml
+  - configs/config_main_noh23.yml
+  - configs/config_main_cluster.yml
+  - configs/config_main_all_covariates.yml
+  - configs/config_baseline.yml
+  - configs/config_baseline_category.yml
+  - configs/config_baseline_h23.yml
+  - configs/config_baseline_seed05.yml
+  - configs/config_baseline_seed07.yml
+  - configs/config_baseline_seed12.yml
+  - configs/config_baseline_seed20.yml

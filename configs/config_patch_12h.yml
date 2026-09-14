@@ -1,0 +1,49 @@
+# Patch-Laengen-Ablation: identisch zu config_main.yml bis auf encoder.patch_len/stride
+# (12 statt 8).
+version: "main"
+split:
+  train: 0.8
+  val: 0.1
+  test: 0.1
+  seed: 99                      # Sensor-Split (identisch fuer alle Configs, siehe run_config._validate_runs)
+
+
+model:
+  denoiser:
+    hidden_dim: 128
+    time_dim: 64
+    n_res_blocks: 4
+    context_dim: 128
+    cross_attn: true
+    cross_attn_dropout: 0.1
+    covariate_columns:            # Reihenfolge = Spaltenreihenfolge in X; prev_h23 muss zuletzt stehen
+      energy_type: True
+      cyclical_time: True
+      is_holiday: True
+      daily_weather: True
+      category: True
+      cluster: False
+      prev_h23: True              # Last Stunde 23 des Vortags, in der Skala des Zieltags (autoregressive Verkettung)
+  encoder:
+    type: "patch"               # null | "patch"
+    num_layers: 1
+    nhead: 16
+    dim_feedforward: 256
+    dropout: 0.2
+    patch_len: 12               # <- Ablationsachse
+    stride: 12
+    measurement_min_days: 1       # Messfenster 1 bis 14 Tage, Laenge je Sample zufaellig
+    measurement_max_days: 14
+    token_columns:                # Kanaele je Stunde im Messfenster
+      hourly_load: True
+      hourly_time: True
+      hourly_weather: True
+
+
+training:
+  seed: 9                       # Trainings-Seed (Gewichtsinit, Batch-Reihenfolge)
+  batch_size: 512
+  learning_rate: 0.001
+  diffusion_steps: 500
+  seq_len: 24
+  epochs: 50

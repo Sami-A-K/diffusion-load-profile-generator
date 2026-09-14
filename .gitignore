@@ -1,0 +1,25 @@
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.vscode/
+.env
+
+# Daten werden nicht versioniert (siehe README, Abschnitt "Daten beziehen").
+# Ausnahmen: Sensor-Split und x0-Grenzen (klein, nötig für Reproduzierbarkeit und Sampling)
+*.zip
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+!data/processed/openmeter/
+data/processed/openmeter/*
+!data/processed/openmeter/training_split_*.json
+!data/processed/openmeter/training_data/
+data/processed/openmeter/training_data/*
+!data/processed/openmeter/training_data/x0bounds_*.json
+data/samples/*
+!data/samples/.gitkeep
+
+# Nur die besten Checkpoints werden versioniert
+src/model/model_weights/*_last.pth
+src/model/model_weights/*probe*

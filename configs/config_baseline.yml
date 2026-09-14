@@ -1,0 +1,48 @@
+# Baseline: Version aus der vorangegangenen Masterarbeit
+version: "baseline"              # Gleiche version teilt sich einen Train/Test/Val Datensatz. Setzt gleiche covariates voraus. Muss manuell eingestellt werden.
+split:
+  train: 0.8
+  val: 0.1
+  test: 0.1
+  seed: 99
+
+
+model:
+  denoiser:
+    hidden_dim: 128
+    time_dim: 64
+    n_res_blocks: 4
+    context_dim: 128
+    cross_attn: False             # True, falls encoder genutzt werden soll
+    cross_attn_dropout: 0.1
+    covariate_columns:
+      energy_type: True
+      cyclical_time: True
+      is_holiday: True
+      daily_weather: True
+      category: False
+      cluster: True
+      prev_h23: False
+  encoder:
+    type: null                    # null | "patch" (Art des Encoders, bisher nur "patch" umgesetzt)
+    num_layers: 1
+    nhead: 16
+    dim_feedforward: 256
+    dropout: 0.2
+    patch_len: 8
+    stride: 8
+    measurement_min_days: 1       # Messfenster 1 bis 14 Tage, Laenge je Sample zufaellig
+    measurement_max_days: 14
+    token_columns:                # Kanaele je Stunde im Messfenster
+      hourly_load: True
+      hourly_time: True
+      hourly_weather: True
+
+
+training:
+  seed: 9                       # Trainings-Seed (Gewichtsinit,Batch-Reihenfolge)
+  batch_size: 512
+  learning_rate: 0.001
+  diffusion_steps: 500
+  seq_len: 24
+  epochs: 50
