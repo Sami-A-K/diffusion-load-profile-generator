@@ -29,6 +29,8 @@ Im Repository enthalten sind Code, Configs, Ergebnistabellen (`results/`), Abbil
 und die Checkpoints `*_best.pth`, außerdem:
 
 - `data/processed/openmeter/training_split_99.json`: Sensor-IDs je Split (873 train / 109 val / 110 test)
+- `data/processed/openmeter/cluster_proportions.csv`: Cluster-Anteile je Kategorie und Energieart, benötigt
+  für das Sampling mit `--cluster-source sampled`
 - `data/processed/openmeter/training_data/x0bounds_<version>.json`: Wertebereich von x0 im Trainings-Split,
   benötigt für das Sampling mit den Checkpoints
 

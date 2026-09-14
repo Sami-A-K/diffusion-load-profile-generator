@@ -14,6 +14,7 @@ data/processed/*
 !data/processed/openmeter/
 data/processed/openmeter/*
 !data/processed/openmeter/training_split_*.json
+!data/processed/openmeter/cluster_proportions.csv
 !data/processed/openmeter/training_data/
 data/processed/openmeter/training_data/*
 !data/processed/openmeter/training_data/x0bounds_*.json
